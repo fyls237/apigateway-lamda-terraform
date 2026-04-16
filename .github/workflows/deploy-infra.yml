@@ -67,6 +67,7 @@ jobs:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
+      LABROLE_ARN: ${{ secrets.LABROLE_ARN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -83,7 +84,7 @@ jobs:
       - name: Terraform Plan
         id: plan
         working-directory: ./infrastructure
-        run: terraform plan -no-color 2>&1 | tee /tmp/plan.txt
+        run: terraform plan -no-color -var="lambda_exec_role_arn=${LABROLE_ARN}" 2>&1 | tee /tmp/plan.txt
 
       - name: Post plan to PR
         uses: actions/github-script@v7
@@ -116,6 +117,7 @@ jobs:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
+      LABROLE_ARN: ${{ secrets.LABROLE_ARN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -131,7 +133,7 @@ jobs:
 
       - name: Terraform Apply
         working-directory: ./infrastructure
-        run: terraform apply -auto-approve
+        run: terraform apply -auto-approve -var="lambda_exec_role_arn=${LABROLE_ARN}"
 
       - name: Show Infrastructure Outputs
         working-directory: ./infrastructure
