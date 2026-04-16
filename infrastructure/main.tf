@@ -12,14 +12,14 @@ terraform {
     }
   }
 
-  backend "s3" {
-    # Configure via -backend-config flags or environment variables:
-    #   bucket         = var.TF_STATE_BUCKET
-    #   key            = "apigateway-lambda/terraform.tfstate"
-    #   region         = var.aws_region
-    #   dynamodb_table = var.TF_STATE_LOCK_TABLE
-    #   encrypt        = true
-  }
+  # backend "s3" {
+  #   # Configure via -backend-config flags or environment variables:
+  #   #   bucket         = var.TF_STATE_BUCKET
+  #   #   key            = "apigateway-lambda/terraform.tfstate"
+  #   #   region         = var.aws_region
+  #   #   dynamodb_table = var.TF_STATE_LOCK_TABLE
+  #   #   encrypt        = true
+  # }
 }
 
 provider "aws" {
