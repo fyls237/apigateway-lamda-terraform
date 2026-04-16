@@ -4,20 +4,20 @@
 
 data "archive_file" "user_management" {
   type        = "zip"
-  source_dir  = "${path.module}/lambda/user_management"
-  output_path = "${path.module}/lambda/user_management.zip"
+  source_dir  = "${path.module}/../lambda/user_management"
+  output_path = "${path.module}/../lambda/user_management.zip"
 }
 
 data "archive_file" "data_processing" {
   type        = "zip"
-  source_dir  = "${path.module}/lambda/data_processing"
-  output_path = "${path.module}/lambda/data_processing.zip"
+  source_dir  = "${path.module}/../lambda/data_processing"
+  output_path = "${path.module}/../lambda/data_processing.zip"
 }
 
 data "archive_file" "image_processing" {
   type        = "zip"
-  source_dir  = "${path.module}/lambda/image_processing"
-  output_path = "${path.module}/lambda/image_processing.zip"
+  source_dir  = "${path.module}/../lambda/image_processing"
+  output_path = "${path.module}/../lambda/image_processing.zip"
 }
 
 # ---------------------------------------------------------------------------
